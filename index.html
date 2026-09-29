@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ansh Narayan | Data & Analytics Engineer</title>
+
+    <meta
+        name="description"
+        content="Portfolio of Ansh Narayan — Data & Analytics and Database-focused Engineer specializing in SQL, Python, PostgreSQL, Power BI, ETL and AWS."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --bg: #08090d;
+            --bg-soft: #0e1016;
+            --card: #11141b;
+            --card-hover: #151923;
+            --border: #252a35;
+            --text: #f5f7fa;
+            --muted: #969daa;
+            --accent: #62e6a7;
+            --accent-dark: #39b77d;
+            --blue: #6ea8ff;
+            --purple: #a98cff;
+            --danger: #ff7b7b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(8, 9, 13, 0.82);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-inner {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+
+            background:
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(98,230,167,0.08),
+                    transparent 30%
+                );
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .terminal {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            color: var(--accent);
+
+            background: rgba(98,230,167,0.05);
+            border: 1px solid rgba(98,230,167,0.18);
+
+            padding: 8px 13px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .terminal-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(45px, 6vw, 78px);
+            line-height: 1.02;
+            letter-spacing: -3px;
+            margin-bottom: 22px;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 21px;
+            color: #d5d8df;
+            max-width: 680px;
+            margin-bottom: 17px;
+        }
+
+        .hero-description {
+            color: var(--muted);
+            max-width: 650px;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #07110c;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: #7cf0b8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: var(--card);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ================= CODE CARD ================= */
+
+        .code-window {
+            background: #0d1016;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.35);
+        }
+
+        .window-header {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 14px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #343944;
+        }
+
+        .code {
+            padding: 25px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            line-height: 2;
+            color: #aeb6c4;
+        }
+
+        .code .green {
+            color: var(--accent);
+        }
+
+        .code .blue {
+            color: var(--blue);
+        }
+
+        .code .purple {
+            color: var(--purple);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 28px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .stat-title {
+            color: #d7dbe2;
+            font-size: 14px;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .about-list {
+            list-style: none;
+            display: grid;
+            gap: 13px;
+        }
+
+        .about-list li {
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .about-list strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .about-list span {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            transition: 0.25s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(98,230,167,0.4);
+            background: var(--card-hover);
+        }
+
+        .skill-icon {
+            font-family: "JetBrains Mono", monospace;
+            color: var(--accent);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 17px;
+            margin-bottom: 9px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= EXPERIENCE ================= */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 42px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 3px;
+            top: 6px;
+
+            width: 11px;
+            height: 11px;
+
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(98,230,167,0.5);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .company {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .timeline-item ul {
+            color: var(--muted);
+            padding-left: 18px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: rgba(98,230,167,0.35);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .project h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            padding: 5px 8px;
+
+            background: #171b24;
+            color: #aeb5c1;
+
+            border: 1px solid #282e3a;
+            border-radius: 5px;
+        }
+
+        /* ================= DATABASE SECTION ================= */
+
+        .database {
+            background: #0c0f14;
+        }
+
+        .database-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .db-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .db-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .db-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .db-code {
+            background: #080a0e;
+            border-radius: 7px;
+            padding: 18px;
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #9ca5b4;
+
+            overflow-x: auto;
+        }
+
+        .db-code .keyword {
+            color: var(--purple);
+        }
+
+        .db-code .function {
+            color: var(--accent);
+        }
+
+        /* ================= CERTIFICATIONS ================= */
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .cert {
+            padding: 25px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 10px;
+        }
+
+        .cert h3 {
+            margin-bottom: 5px;
+        }
+
+        .cert p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-box {
+            text-align: center;
+            padding: 70px 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(98,230,167,0.06),
+                    transparent 55%
+                );
+        }
+
+        .contact-box h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+
+                background: #090b0f;
+                border-bottom: 1px solid var(--border);
+
+                flex-direction: column;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .database-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            section {
+                padding: 80px 0;
+            }
+
+            h1 {
+                font-size: 45px;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .stats,
+            .skills-grid,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 31px;
+            }
+
+            .contact-box h2 {
+                font-size: 32px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            ansh<span>.dev</span>
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#database">Database</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="terminal">
+                <span class="terminal-dot"></span>
+                Data & Analytics Engineer
+            </div>
+
+            <h1>
+                Hi, I'm <span>Ansh.</span>
+                <br>
+                I build data systems.
+            </h1>
+
+            <p class="hero-subtitle">
+                Data & Analytics / Database-focused Engineer
+            </p>
+
+            <p class="hero-description">
+                I work with SQL, Python, PostgreSQL, MySQL, Power BI,
+                ETL pipelines and AWS to turn complex datasets into
+                reliable data systems and actionable business insights.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                </a>
+
+                <a href="mailto:narayanansh94@gmail.com"
+                   class="btn btn-secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CODE WINDOW -->
+
+        <div class="code-window">
+
+            <div class="window-header">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+            </div>
+
+            <div class="code">
+
+                <div>
+                    <span class="purple">const</span>
+                    engineer = {
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;name:
+                    <span class="green">"Ansh Narayan"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;role:
+                    <span class="green">"Data Engineer"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;sql:
+                    <span class="green">true</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;python:
+                    <span class="green">true</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;powerBI:
+                    <span class="green">true</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;aws:
+                    <span class="green">true</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;databases: [
+                    <span class="blue">"PostgreSQL"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="blue">"MySQL"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="blue">"SQL Server"</span>
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;]
+                </div>
+
+                <div>};</div>
+
+                <br>
+
+                <div>
+                    <span class="purple">engineer</span>.
+                    <span class="green">build()</span>;
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="stats">
+
+            <div class="stat">
+                <div class="stat-number">400K+</div>
+                <div class="stat-title">
+                    Records analyzed
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">100K+</div>
+                <div class="stat-title">
+                    Rows processed
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">29</div>
+                <div class="stat-title">
+                    Tables in DMS
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">3+</div>
+                <div class="stat-title">
+                    ETL workflows
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-label">
+            01 / ABOUT
+        </div>
+
+        <h2 class="section-title">
+            Data, databases & analytics.
+        </h2>
+
+        <p class="section-description">
+            My work sits at the intersection of database engineering,
+            data analytics and business intelligence.
+        </p>
+
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I'm a Junior Software Developer focused on database
+                    and analytics engineering. I work with relational
+                    databases, SQL development, Python-based data
+                    processing and Power BI reporting.
+                </p>
+
+                <p>
+                    At Eleserv Softech, I've worked on database design,
+                    stored procedures, ETL automation, data cleaning,
+                    migrations and business dashboards.
+                </p>
+
+                <p>
+                    I'm particularly interested in building reliable
+                    data pipelines and transforming raw business data
+                    into systems that teams can actually use.
+                </p>
+
+            </div>
+
+
+            <ul class="about-list">
+
+                <li>
+                    <strong>Database Engineering</strong>
+                    <span>
+                        PostgreSQL · MySQL · SQL Server · Stored Procedures
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Data Analytics</strong>
+                    <span>
+                        Python · Pandas · Excel · Power BI · EDA
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Data Engineering</strong>
+                    <span>
+                        ETL · n8n · Data Wrangling · Data Pipelines
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Cloud</strong>
+                    <span>
+                        AWS S3 · EC2 · IAM · Lambda
+                    </span>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-label">
+            02 / SKILLS
+        </div>
+
+        <h2 class="section-title">
+            Tools I work with.
+        </h2>
+
+        <p class="section-description">
+            A practical stack focused on data, databases, analytics
+            and cloud technologies.
+        </p>
+
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+
+                <div class="skill-icon">01</div>
+
+                <h3>SQL & Databases</h3>
+
+                <p>
+                    MySQL, PostgreSQL, SQL Server, DBMS,
+                    Stored Procedures, Views, CTEs, UDFs,
+                    Window Functions and indexing.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">02</div>
+
+                <h3>Python</h3>
+
+                <p>
+                    Python, Pandas and NumPy for data cleaning,
+                    transformation, analysis and ETL workflows.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">03</div>
+
+                <h3>Business Intelligence</h3>
+
+                <p>
+                    Power BI, Excel, exploratory data analysis,
+                    KPI reporting and interactive dashboards.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">04</div>
+
+                <h3>AWS</h3>
+
+                <p>
+                    AWS S3, EC2, IAM and Lambda with
+                    AWS Certified Cloud Practitioner certification.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">05</div>
+
+                <h3>ETL & Automation</h3>
+
+                <p>
+                    n8n automation, data pipelines, data validation,
+                    cleaning and workflow automation.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">06</div>
+
+                <h3>Developer Tools</h3>
+
+                <p>
+                    Git, Postman, MySQL Workbench,
+                    Linux and Windows environments.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-label">
+            03 / EXPERIENCE
+        </div>
+
+        <h2 class="section-title">
+            Where I've worked.
+        </h2>
+
+        <p class="section-description">
+            Building databases, analytics systems and automation
+            workflows at Eleserv Softech.
+        </p>
+
+
+        <div class="timeline">
+
+            <!-- CURRENT ROLE -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    MAR 2026 — PRESENT
+                </div>
+
+                <h3>
+                    Junior Software Developer —
+                    Database & Analytics
+                </h3>
+
+                <div class="company">
+                    Eleserv Softech · New Delhi
+                </div>
+
+                <ul>
+
+                    <li>
+                        Designed 3+ relational schemas in SQL Server
+                        and PostgreSQL.
+                    </li>
+
+                    <li>
+                        Built Stored Procedures, Views, CTEs and UDFs
+                        for data access and reporting.
+                    </li>
+
+                    <li>
+                        Developed complex SQL procedures using JSONB
+                        parsing, LATERAL joins and window functions.
+                    </li>
+
+                    <li>
+                        Worked on rolling collection and DPD metrics
+                        across a 16-table loan portfolio schema.
+                    </li>
+
+                    <li>
+                        Developed Power BI dashboards for KPI tracking
+                        and business reporting.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- INTERNSHIP -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    AUG 2025 — FEB 2026
+                </div>
+
+                <h3>
+                    Software Developer Intern —
+                    Data & Analytics
+                </h3>
+
+                <div class="company">
+                    Eleserv Softech · New Delhi
+                </div>
+
+                <ul>
+
+                    <li>
+                        Cleaned and validated 100,000+ row datasets
+                        using Python, Pandas and Excel.
+                    </li>
+
+                    <li>
+                        Automated 3+ ETL workflows using n8n.
+                    </li>
+
+                    <li>
+                        Designed and migrated a 29-table Document
+                        Management System to PostgreSQL.
+                    </li>
+
+                    <li>
+                        Analyzed 400,000+ records across four
+                        business data sources.
+                    </li>
+
+                    <li>
+                        Built the RKB Analytics Dashboard in Power BI.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-label">
+            04 / PROJECTS
+        </div>
+
+        <h2 class="section-title">
+            Things I've built.
+        </h2>
+
+        <p class="section-description">
+            Selected data, analytics and database projects.
+        </p>
+
+
+        <div class="projects">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 01
+                </div>
+
+                <h3>
+                    RKB Analytics Dashboard
+                </h3>
+
+                <p>
+                    Unified analytics solution analyzing 400K+
+                    records across WhatsApp campaign, transaction
+                    sales and CRM call data. Built Power BI reporting
+                    for funnel and performance insights.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Data Analytics</span>
+                    <span class="tag">400K+ Records</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 02
+                </div>
+
+                <h3>
+                    Document Management System
+                </h3>
+
+                <p>
+                    Designed and migrated a 29-table Document
+                    Management System to PostgreSQL with primary
+                    keys, foreign keys, indexing and referential
+                    integrity.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Database Design</span>
+                    <span class="tag">29 Tables</span>
+                    <span class="tag">Indexing</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 03
+                </div>
+
+                <h3>
+                    Loan Portfolio Analytics
+                </h3>
+
+                <p>
+                    Developed SQL procedures for collection and DPD
+                    analytics across a 16-table loan portfolio schema,
+                    using JSONB parsing, LATERAL joins and window
+                    functions.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">JSONB</span>
+                    <span class="tag">Window Functions</span>
+                    <span class="tag">SQL</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 04
+                </div>
+
+                <h3>
+                    Spotify Data Analysis
+                </h3>
+
+                <p>
+                    Analyzed streaming data containing 1,000+
+                    tracks and built interactive Power BI dashboards
+                    to study track popularity and genre trends.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">EDA</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 5 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 05
+                </div>
+
+                <h3>
+                    Real-Time Weather Analytics
+                </h3>
+
+                <p>
+                    Built a Power BI analytics dashboard using
+                    weather data fetched through a REST API,
+                    transforming JSON responses into structured
+                    datasets.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">JSON</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 6 -->
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT / 06
+                </div>
+
+                <h3>
+                    E-Commerce Sales Analytics
+                </h3>
+
+                <p>
+                    Created SQL-based sales analysis using CTEs
+                    and window functions, visualizing AOV,
+                    conversion rate and regional revenue KPIs
+                    in Power BI.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">CTEs</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DATABASE ================= -->
+
+<section id="database" class="database">
+
+    <div class="container">
+
+        <div class="section-label">
+            05 / DATABASE ENGINEERING
+        </div>
+
+        <h2 class="section-title">
+            SQL is at the core.
+        </h2>
+
+        <p class="section-description">
+            Designing relational structures, writing analytical
+            queries and building reusable database logic.
+        </p>
+
+
+        <div class="database-grid">
+
+
+            <div class="db-card">
+
+                <h3>
+                    Relational Database Design
+                </h3>
+
+                <p>
+                    Designing structured schemas with primary keys,
+                    foreign keys, indexes and referential integrity.
+                </p>
+
+                <div class="db-code">
+
+                    <span class="keyword">CREATE TABLE</span>
+                    loan_account (<br>
+
+                    &nbsp;&nbsp;account_id
+                    <span class="function">UUID</span>
+                    PRIMARY KEY,<br>
+
+                    &nbsp;&nbsp;customer_id
+                    <span class="function">UUID</span>
+                    NOT NULL,<br>
+
+                    &nbsp;&nbsp;loan_amount
+                    <span class="function">NUMERIC</span>,<br>
+
+                    &nbsp;&nbsp;created_at
+                    <span class="function">TIMESTAMP</span><br>
+
+                    );
+
+                </div>
+
+            </div>
+
+
+            <div class="db-card">
+
+                <h3>
+                    Analytical SQL
+                </h3>
+
+                <p>
+                    Using CTEs, window functions and advanced joins
+                    for complex reporting and business metrics.
+                </p>
+
+                <div class="db-code">
+
+                    <span class="keyword">WITH</span> monthly_data
+                    <span class="keyword">AS</span> (<br>
+
+                    &nbsp;&nbsp;<span class="keyword">SELECT</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;customer_id,<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;SUM(amount)
+                    <span class="keyword">OVER</span> (<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">PARTITION BY</span>
+                    customer_id<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;)
+                    <span class="keyword">AS</span> total_amount<br>
+
+                    &nbsp;&nbsp;<span class="keyword">FROM</span>
+                    transactions<br>
+
+                    )
+
+                </div>
+
+            </div>
+
+
+            <div class="db-card">
+
+                <h3>
+                    Stored Procedures
+                </h3>
+
+                <p>
+                    Building reusable database logic for reporting,
+                    transformation and business calculations.
+                </p>
+
+                <div class="db-code">
+
+                    <span class="keyword">CREATE OR REPLACE</span><br>
+
+                    <span class="keyword">FUNCTION</span>
+                    calculate_metrics()<br>
+
+                    <span class="keyword">RETURNS</span>
+                    <span class="function">TABLE</span><br>
+
+                    <span class="keyword">AS</span> $$<br>
+
+                    <span class="keyword">BEGIN</span><br>
+
+                    &nbsp;&nbsp;-- business logic<br>
+
+                    &nbsp;&nbsp;<span class="keyword">RETURN QUERY</span>
+                    ...;<br>
+
+                    <span class="keyword">END</span>;
+
+                </div>
+
+            </div>
+
+
+            <div class="db-card">
+
+                <h3>
+                    Data Pipeline
+                </h3>
+
+                <p>
+                    Cleaning, transforming and automating large
+                    datasets using Python, Pandas and n8n.
+                </p>
+
+                <div class="db-code">
+
+                    <span class="keyword">import</span> pandas
+                    <span class="keyword">as</span> pd<br><br>
+
+                    df = pd.read_csv(
+                    <span class="function">"data.csv"</span>
+                    )<br>
+
+                    df = df.drop_duplicates()<br>
+
+                    df = df.dropna()<br>
+
+                    df.to_csv(
+                    <span class="function">"clean_data.csv"</span>
+                    )
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CERTIFICATIONS ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-label">
+            06 / CERTIFICATIONS
+        </div>
+
+        <h2 class="section-title">
+            Certifications.
+        </h2>
+
+        <div class="cert-grid">
+
+            <div class="cert">
+
+                <h3>
+                    AWS Certified Cloud Practitioner
+                </h3>
+
+                <p>
+                    Amazon Web Services · CLF-C02 · October 2024
+                </p>
+
+            </div>
+
+
+            <div class="cert">
+
+                <h3>
+                    Deloitte Data Analytics Job Simulation
+                </h3>
+
+                <p>
+                    Forage · February 2025
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <div class="section-label">
+                07 / CONTACT
+            </div>
+
+            <h2>
+                Let's work with data.
+            </h2>
+
+            <p>
+                I'm interested in opportunities involving data
+                engineering, analytics, databases, BI and cloud
+                technologies.
+            </p>
+
+            <div class="contact-links">
+
+                <a
+                    href="mailto:narayanansh94@gmail.com"
+                    class="btn btn-primary"
+                >
+                    Email Me
+                </a>
+
+                <!-- Replace # with your actual LinkedIn URL -->
+                <a
+                    href="#"
+                    class="btn btn-secondary"
+                    target="_blank"
+                >
+                    LinkedIn
+                </a>
+
+                <!-- Replace # with your GitHub URL -->
+                <a
+                    href="#"
+                    class="btn btn-secondary"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+            © 2026 Ansh Narayan
+        </div>
+
+        <div>
+            Data & Analytics · Database Engineering
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function toggleMenu() {
+
+        const nav = document.getElementById("navLinks");
+
+        nav.classList.toggle("active");
+
+    }
+
+
+    // Close mobile menu after clicking a link
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            document
+                .getElementById("navLinks")
+                .classList.remove("active");
+
+        });
+
+    });
+
+
+    // Navbar background on scroll
+
+    window.addEventListener("scroll", () => {
+
+        const nav = document.querySelector("nav");
+
+        if (window.scrollY > 30) {
+
+            nav.style.background = "rgba(8, 9, 13, 0.95)";
+
+        } else {
+
+            nav.style.background = "rgba(8, 9, 13, 0.82)";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
